@@ -23,27 +23,28 @@ VALUES ('')
 
 
 CREATE OR REPLACE FUNCTION addcustomer(
-		first_name varchar(100),
-		last_name varchar(150),
-		cust_email varchar(50),
-		cust_address varchar(150)
+    customer_id INT,
+    first_name varchar(100),
+    last_name varchar(150),
+    cust_email varchar(50),
+    cust_address varchar(150)
 ) RETURNS INTEGER AS $$
 BEGIN
-	INSERT INTO customer(
-		customer_id,
-		first_name,
-		last_name,
-		cust_email,
-		cust_address
-	)	VALUES (
-		customer_id,
-		first_name,
-		last_name,
-		cust_email,
-		cust_address
-	);
-	RETURN customer_id;
-END
+    INSERT INTO customer(
+        customer_id,
+        first_name,
+        last_name,
+        cust_email,
+        cust_address
+    )   VALUES (
+        customer_id,
+        first_name,
+        last_name,
+        cust_email,
+        cust_address
+    );
+    RETURN customer_id;
+END;
 $$ LANGUAGE plpgsql;
 
 
@@ -51,7 +52,7 @@ SELECT addcustomer('003', 'John', 'Wayne', 'cowboywayne@email.com', '45 Rodeo Dr
 
 
 SELECT *
-FROM staff;
+FROM customer;
 
 
 INSERT INTO customer(customer_id, first_name, last_name, cust_email, cust_address)
